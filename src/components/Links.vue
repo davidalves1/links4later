@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { computed, onMounted } from 'vue';
 import { Search } from 'lucide-vue-next';
 
 import LinkItem from './LinkItem.vue';
-import { Link } from '../models/Link';
-import { getState, subscribe } from '../useStore';
+// import { Link } from '../models/Link';
+import { useLinkStore } from '../store';
 import { getLinks } from '../entities/Link';
 
-const links = reactive<Link[]>(getState().links)
+const { state } = useLinkStore
 
-subscribe(() => {
-  Object.assign(links, { ...getState().links });
-})
+const links = computed(() => state.links || [])
 
 onMounted(() => {
   getLinks();
@@ -23,7 +21,7 @@ onMounted(() => {
     <h1 class="text-3xl">Links</h1>
 
     <template v-if="links?.length">
-      <LinkItem v-for="link in links" :key="link._id" :link="link" />
+      <LinkItem v-for="(link, key) in links" :key="key" :link="link" />
     </template>
     <template v-else>
       <div class="flex justify-center items-center gap-x-2">

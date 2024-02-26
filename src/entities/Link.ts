@@ -1,10 +1,12 @@
-import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore'
-import { db, auth } from '../services/firebase';
+import { collection, onSnapshot, query, orderBy, doc, setDoc, deleteDoc } from 'firebase/firestore'
+import { db } from '../services/firebase';
 import { Link } from '../models/Link';
-import { setState, getState } from '../useStore';
+import { MUTATIONS, useLinkStore } from '../store';
 import { clearUserAndRedirect } from '../services/logout';
 import { getCookie } from '../services/cookies';
 import { COOKIE_KEY_USER_ID } from '../services/constants';
+
+const { commit } = useLinkStore;
 
 const getUserId = () => {
   const encodedUserId = getCookie(COOKIE_KEY_USER_ID);
@@ -25,14 +27,13 @@ const getUserId = () => {
 
 export const getLinks = () => {
   const userId = getUserId();
-
   const linksRef = query(collection(db, `bookmarks/${userId}/links`), orderBy('createdAt', 'desc'))
 
   onSnapshot(linksRef, snapshot => {
     const links = snapshot.docs.map<Partial<Link>>(doc => doc.data())
     console.log('🚀 ~ getLinks ~ links:', links);
 
-    setState({ links })
+    commit(MUTATIONS.LOAD_LIKS, links)
   })
 }
 
@@ -54,9 +55,17 @@ export const createLink = async (link: Omit<Link, '_id'>) => {
     }
 
     await setDoc(linksDoc, data);
-
-    return data;
   } catch (err) {
     console.error('🚀 ~ createLink ~ err:', err);
+  }
+}
+
+export const deleteLink = async (linkId: string) => {
+  const userId = getUserId();
+
+  try {
+    await deleteDoc(doc(db, `bookmarks/${userId}/links`, linkId));
+  } catch (err) {
+    console.error('🚀 ~ deleteLink ~ err:', err);
   }
 }
