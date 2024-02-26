@@ -27,13 +27,17 @@ const getUserId = () => {
 
 export const getLinks = () => {
   const userId = getUserId();
-  const linksRef = query(collection(db, `bookmarks/${userId}/links`), orderBy('createdAt', 'desc'))
+  const linksRef = query(collection(db, `bookmarks/${userId}/links`), orderBy('createdAt', 'desc'));
+
+  commit(MUTATIONS.SET_LOADING, true);
 
   onSnapshot(linksRef, snapshot => {
     const links = snapshot.docs.map<Partial<Link>>(doc => doc.data())
     console.log('🚀 ~ getLinks ~ links:', links);
 
-    commit(MUTATIONS.LOAD_LIKS, links)
+    commit(MUTATIONS.LOAD_LINKS, links);
+  commit(MUTATIONS.SET_LOADING, false);
+
   })
 }
 

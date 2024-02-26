@@ -14,9 +14,10 @@ interface StoreArgs {
 }
 
 export enum MUTATIONS {
-  'LOAD_LIKS' = 'loadLinks',
+  'LOAD_LINKS' = 'loadLinks',
   'ADD_LINK' = 'addLink',
   'DELETE_LINK' = 'deleteLink',
+  'SET_LOADING' = 'setLoading',
 }
 
 function createStore({ state, mutations }: StoreArgs) {
@@ -28,7 +29,7 @@ function createStore({ state, mutations }: StoreArgs) {
   };
 }
 
-const state = reactive({ links: [] })
+const state = reactive({ links: [], loading: false })
 
 export const useLinkStore = createStore({
   state,
@@ -42,5 +43,8 @@ export const useLinkStore = createStore({
     deleteLink(state, id: string) {
       state.links = (state.links || []).filter((link: Link) => link._id !== id);
     },
+    setLoading(state, status: boolean) {
+      state.loading = status;
+    }
   },
 });
