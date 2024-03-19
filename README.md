@@ -1,18 +1,48 @@
-# Vue 3 + TypeScript + Vite
+# Links4Later
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7d7b4c25-b2db-4901-adf2-08e2842fc180/deploy-status)](https://app.netlify.com/sites/links4later/deploys)
 
-## Recommended IDE Setup
+### Technologies Used:
+- Vite
+- Vue 3
+- TypeScript
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Getting Started:
+1. Clone the project to your local machine.
+2. Install the dependencies:
+```bash
+npm install
+```
+3. Run the development server:
+```bash
+npm run dev
+```
+4. Open the project in your browser at http://localhost:3000.
 
-## Type Support For `.vue` Imports in TS
+### Building the Project:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+To build the project for production, run the following command:
+```bash
+npm run build
+```
+The production build will be created in the dist directory.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### Testing the Project:
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+To run the unit tests, run the following command:
+```bash
+npm run test
+```
+The unit tests will be run in the test directory.
+
+### Deployment:
+
+The project can be deployed to a static web hosting service such as GitHub Pages or Netlify.
+
+### Contributing:
+
+Contributions are welcome! Please open an issue or pull request if you have any questions or suggestions.
+
+### License:
+
+This project is licensed under the MIT License.
