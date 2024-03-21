@@ -22,7 +22,7 @@ export enum MUTATIONS {
 
 function createStore({ state, mutations }: StoreArgs) {
   return {
-    state: reactive(state),
+    state,
     commit(key: string, ...args: any[]) {
       mutations[key](state, ...args);
     },
