@@ -1,8 +1,6 @@
 # Links4Later
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7d7b4c25-b2db-4901-adf2-08e2842fc180/deploy-status)](https://app.netlify.com/sites/links4later/deploys)
-
-[![Deploy on Azure](https://github.com/davidalves1/links4later/actions/workflows/deploy-azure.yml/badge.svg)](https://github.com/davidalves1/links4later/actions/workflows/deploy-azure.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7d7b4c25-b2db-4901-adf2-08e2842fc180/deploy-status)](https://app.netlify.com/sites/links4later/deploys) | [![Deploy on Azure](https://github.com/davidalves1/links4later/actions/workflows/deploy-azure.yml/badge.svg)](https://github.com/davidalves1/links4later/actions/workflows/deploy-azure.yml)
 
 ### Technologies Used:
 - Vite
